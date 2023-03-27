@@ -1,8 +1,12 @@
+module.exports = Phrase;
+
 // Reverses a string.
 
 String.prototype.reverse = function(){
     return Array.from(this).reverse().join("");
 }
+
+
 
 function Phrase(content) {
 
@@ -13,7 +17,7 @@ function Phrase(content) {
     };
 
     this.processedContent = function processedContent(){
-        return this.processor(this.content)
+        return this.letters().toLowerCase();
     }
 
     this.palindrome = function palindrome(){
@@ -23,6 +27,12 @@ function Phrase(content) {
     this.louder = function loud() {
         return this.content.toUpperCase();
     };
+
+    this.letters = function letters(){
+
+        return (this.content.match(/[a-z]/gi) || []).join("");
+
+    }
 }
 
 function TranslatedPhrase(content, translation) {
